@@ -2,36 +2,38 @@ using System;
 using System.Collections.Generic;
 
 class Program {
-
-  public static bool IsPalindromo(string word) {
-    bool isPalindromo = true;
+  public bool IsPalindrome(string word) {
+    bool isPalindrome = true;
 
     Queue<char> myQueue = new Queue<char>();
-    Queue<char> myQueueInvertida = new Queue<char>();
 
-    for(int i = 0; i < word.Length; i++){
-      myQueue.Enqueue(word[i]);
+    foreach (char c in word) {
+      myQueue.Enqueue(c);
     }
 
-    for(int i = word.Length - 1; i < 0; i--){
-      myQueueInvertida.Enqueue(word[i]);
+    string invertedWord = new string(word.ToCharArray().Reverse().ToArray());
+
+    foreach (char c in invertedWord) {
+      if (c != myQueue.Dequeue()) {
+        isPalindrome = false;
+        break;
+      }
     }
 
-    if(myQueue == myQueueInvertida){
-      return isPalindromo;
-    }else{
-      isPalindromo = false;
-    }
-
-    return isPalindromo;
+    return isPalindrome;
   }
 
   public static void Main() {
-    string word = Console.ReadLine().ToLower(); 
-    if (IsPalindromo(word)) {
+
+    Program program = new Program();
+
+    string input = Console.ReadLine();
+    
+    if (program.IsPalindrome(input)) {
       Console.WriteLine("si");
     } else {
       Console.WriteLine("no");
     }
   }
 }
+
