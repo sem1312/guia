@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.VisualBasic;
 
 class Program {
 
@@ -32,6 +33,10 @@ class Program {
     ArrayList miLista = new ArrayList {7,5,3,1,73,18,82};
 
     program.selectionSort(miLista);
+
+    foreach(var item in miLista){
+      Console.WriteLine(item);
+    }
 
 
     
